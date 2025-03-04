@@ -1,5 +1,5 @@
 import sys
-#import pytz
+import pytz
 from pathlib import Path
 
 parent_dir = str(Path(__file__).parent.parent)
@@ -117,17 +117,17 @@ def load_shape_data_file(data_dir, url="https://d37ci6vzurychx.cloudfront.net/mi
         raise Exception(f"Failed to load shapefile: {e}")
 
 
-current_date = pd.Timestamp.now(tz="Etc/UTC")
-st.title(f"New York Yellow Taxi Cab Demand Next Hour")
-st.header(f'{current_date.strftime("%Y-%m-%d %H:%M:%S")}')
+#current_date = pd.Timestamp.now(tz="Etc/UTC")
+#st.title(f"New York Yellow Taxi Cab Demand Next Hour")
+#st.header(f'{current_date.strftime("%Y-%m-%d %H:%M:%S")}')
 
 #current_date = pd.Timestamp.now(tz="Etc/UTC")
 #st.title(f"New York Yellow Taxi Cab Demand Next Hour")
 #st.header(f'{current_date.strftime("%Y-%m-%d %H:%M:%S")}')
 
 # Convert UTC to New York Time (EST/EDT)
-#nyc_tz = pytz.timezone("America/New_York")
-#current_date = pd.Timestamp.now(tz="UTC").tz_convert(nyc_tz)
+nyc_tz = pytz.timezone("America/New_York")
+current_date = pd.Timestamp.now(tz="UTC").tz_convert(nyc_tz)
 
 
 progress_bar = st.sidebar.header("Working Progress")
